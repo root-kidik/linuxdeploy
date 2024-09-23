@@ -17,8 +17,27 @@ tempfile=$(mktemp -t linuxdeploy-excludelist.h-XXXXXX)
 log_prefix="-- [$(basename $0)]"
 
 echo "$log_prefix downloading excludelist from GitHub"
-url="https://raw.githubusercontent.com/probonopd/AppImages/master/excludelist"
-blacklisted=($(wget --quiet "$url" -O - | sed 's|#.*||g' | sort | uniq))
+url="https://gist.githubusercontent.com/root-kidik/d2c487591bb8b8e5c93726c3d8675544/raw/fbcf46d1d1925dea5e31ea87a8f6279b59fb4b0e/exclude-list"
+blacklisted='ld-linux.so.2",
+"ld-linux-x86-64.so.2",
+"libanl.so.1",
+"libBrokenLocale.so.1",
+"libcidn.so.1",
+"libc.so.6",
+"libdl.so.2",
+"libm.so.6",
+"libmvec.so.1",
+"libnss_compat.so.2",
+"libnss_dns.so.2",
+"libnss_files.so.2",
+"libnss_hesiod.so.2",
+"libnss_nisplus.so.2",
+"libnss_nis.so.2",
+"libpthread.so.0",
+"libresolv.so.2",
+"librt.so.1",
+"libthread_db.so.1",
+"libutil.so.1'
 
 # sanity check
 if [ "$blacklisted" == "" ]; then
